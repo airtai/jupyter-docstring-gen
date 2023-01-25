@@ -24,6 +24,6 @@ If you use [jupyter-contrib-nbextensions](https://github.com/ipython-contrib/jup
 Otherwise, you can still install/try the extension from below repo, using
 
 ```bash
-jupyter nbextension install https://github.com/harishmohanraj/jupyter-docstring-gen/archive/master.zip --user
-jupyter nbextension enable jupyter-docstring-gen-master/jupyter-docstring-gen
+jupyter nbextension install https://github.com/airtai/jupyter-docstring-gen/archive/main.zip --user
+jupyter nbextension enable jupyter-docstring-gen-main/jupyter-docstring-gen
 ```
