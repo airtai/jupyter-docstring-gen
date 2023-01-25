@@ -1,0 +1,71 @@
+Type: IPython Notebook Extension
+Name: Jupyter Docstring Generator
+Description: Use docstring-gen to instantly improve the documentation of your Python code
+Link: README.md
+Main: jupyter-docstring-gen.js
+Compatibility: Jupyter 4.x, 5.x
+Parameters:
+- name: jupyter-docstring-gen.add_toolbar_button
+  description: Add a toolbar button to add docstring to the selected cell(s)
+  input_type: checkbox
+  default: true
+
+- name: jupyter-docstring-gen.button_icon
+  description: |
+    Toolbar button icon: a font-awesome class defining the icon used for the
+    toolbar button and actions.
+    See https://fontawesome.com/icons for available icons.
+  input_type: text
+  default: 'fa-pencil' 
+
+- name: jupyter-docstring-gen.button_label
+  description: Toolbar button label text
+  input_type: text
+  default: 'Add docstring'
+
+- name: jupyter-docstring-gen.register_hotkey
+  description: |
+    Register hotkeys to add docstring to the selected code cell(s), or all code cells
+    in the notebook
+  input_type: checkbox
+  default: true
+
+- name: jupyter-docstring-gen.hotkeys.process_selected
+  description: Hotkey to use to add docstring to the selected cell(s)
+  input_type: hotkey
+  default: 'Ctrl-G'
+
+- name: jupyter-docstring-gen.hotkeys.process_all
+  description: Hotkey to use to add docstring to the whole notebook
+  input_type: hotkey
+  default: 'Ctrl-Shift-G'
+
+- name: jupyter-docstring-gen.show_alerts_for_not_supported_kernel
+  description: Show alerts if the kernel is not supported
+  input_type: checkbox
+  default: false
+
+- name: jupyter-docstring-gen.show_alerts_for_errors
+  description: Show alerts for errors in the kernel prettifying calls
+  input_type: checkbox
+  default: true
+
+- name: jupyter-docstring-gen.kernel_config_map_json
+  description: |
+    json defining library calls required to load the kernel-specific
+    prettifying modules, and the prefix & postfix for the json-format string
+    required to make the prettifying call.
+  input_type: textarea
+  default: |
+    {
+      "python": {
+        "library": "import json\ndef generate_docstring(cell_text):\n    from docstring_gen.docstring_generator import _check_and_add_docstrings_to_source\n    import re\n    cell_text = re.sub('^%', '#%#', cell_text, flags=re.M)\n    text_with_docstring = _check_and_add_docstrings_to_source(source = cell_text, include_auto_gen_txt=True, recreate_auto_gen_docs=True, model='code-davinci-002', temperature=0.2, max_tokens=250, top_p=1.0, n=3, frequency_penalty=0.0, presence_penalty=0.0, stop=['#', '\"\"\"'])\n    return re.sub('^#%#', '%', text_with_docstring, flags=re.M)",
+        "prefix": "print(json.dumps(generate_docstring(u",
+        "postfix": ")))"
+      },
+      "javascript": {
+        "library": "jsbeautify = require('js-beautify')",
+        "prefix": "console.log(JSON.stringify(jsbeautify.js_beautify(",
+        "postfix": ")));"
+      }
+    }
