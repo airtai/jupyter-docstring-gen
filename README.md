@@ -19,9 +19,9 @@ Then the extension provides
 
 ## Installation
 
-If you use [jupyter-contrib-nbextensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions), proceed as usual. 
+Please ensure [jupyter-contrib-nbextensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions) is installed before installing the extension
 
-Otherwise, you can still install/try the extension from below repo, using
+To install the extension, simply run the following commands in your terminal:
 
 ```bash
 jupyter nbextension install https://github.com/airtai/jupyter-docstring-gen/archive/main.zip --user
