@@ -27,3 +27,12 @@ Otherwise, you can still install/try the extension from below repo, using
 jupyter nbextension install https://github.com/airtai/jupyter-docstring-gen/archive/main.zip --user
 jupyter nbextension enable jupyter-docstring-gen-main/jupyter-docstring-gen
 ```
+
+## Copyright
+
+Copyright © 2023 onwards airt technologies ltd, Inc.
+
+## License
+
+This project is licensed under the terms of the [Apache License
+2.0](https://github.com/airtai/jupyter-docstring-gen/blob/main/LICENSE)
